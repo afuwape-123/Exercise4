@@ -1,23 +1,78 @@
-package ganiu_project;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class EmployeeTest {
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class EmployeeTest {
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+
+	}
 	
-	public static void main(String[] args) {
-
-		Employee staff1 = new Employee ("Bola", "Inyang", 10000.00);
-		Employee staff2 = new Employee("Adewale", "Ademola", 5000.00);
-		
-		System.out.printf("%s %s%n",staff1.getFirstName(),staff1.getLastName());
-		System.out.println("Salary for the year: " + staff1.getSalary());
-		System.out.println("Salary after increase: " +staff1.salaryIncrease());
-		System.out.println();
-
-		
-
-		System.out.printf("%s %s%n",staff2.getFirstName(),staff2.getLastName());
-		System.out.println("Salary for the year: " + staff2.getSalary());
-		System.out.println("Salary after increase: " +staff2.salaryIncrease());
+	Employee obj;
 	
-		 }
+	@BeforeEach
+	void setUp() throws Exception {
+		
+	 obj = new Employee();
+	}
 
-} 
+	@AfterEach
+	void tearDown() throws Exception {
+
+	}
+
+	@Test
+	void test() {
+		assertNotNull(obj);
+	}
+
+	@Test
+	void checkForFirstName() {
+		assertEquals(null, obj.getFirstName());
+	}
+	
+	@Test
+	void setFirstName() {
+		obj.setFirstName("Adewale");
+		assertEquals("Adewale", obj.getFirstName());
+	}
+	
+	@Test
+	void checkForLastName() {
+		assertEquals(null, obj.getLastName());
+	}
+	
+	@Test
+	void setLastName() {
+		obj.setLastName("Adeyinka");
+		assertEquals("Adeyinka", obj.getLastName());
+	}
+	
+	@Test
+	void checkForEmployeeMonthlySalary() {
+		assertEquals(0.0, obj.getSalary());	
+	}
+	
+	@Test
+	void testForSetEmployeeSalary() {
+		obj.setSalary(1200.0);
+		assertEquals(14400.0, obj.getSalary());
+	}
+	
+	@Test
+	void testForIncreaseOfEmployeeSalary() {
+		obj.salaryIncrease(100.0);
+	//	assertEquals(110.0, obj.getSalary());
+		
+	}
+}
